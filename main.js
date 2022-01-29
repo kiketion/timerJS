@@ -1,12 +1,10 @@
 class Timer {
   constructor(root) {
-    this.body = document.getElementById('body');
-
     this.el = {
-      minutes: this.body.querySelegctor('.timer_minutes'),
-      seconds: this.body.querySelector('.timer_seconds'),
-      control: this.body.querySelector('.button_play'),
-      reset: this.body.querySelector('.button_timer'),
+      minutes: root.querySelector('.timer_minutes'),
+      seconds: root.querySelector('.timer_seconds'),
+      control: root.querySelector('.button_play'),
+      reset: root.querySelector('#button_timer'),
     };
 
     this.interval = null;
@@ -18,9 +16,11 @@ class Timer {
       if (inputMinutes < 60) {
         this.stop();
         this.remainingSeconds = inputMinutes * 60;
-        this.updateInterfaceTime();
       }
+      this.updateInterfaceTime();
     });
+
+    this.el.control.addEventListener('click', () => this.startTimer());
   }
 
   updateInterfaceTime() {
@@ -31,9 +31,9 @@ class Timer {
     this.el.seconds.textContent = seconds.toString().padStart(2, '0');
   }
 
-  setTimer() {
-    if (this.interval === null || ) {
-      return;
+  startTimer() {
+    if (this.interval === null) {
+      this.start();
     } else {
       this.stop();
     }

@@ -37,10 +37,10 @@ body {
   cursor: pointer;
 }
 
-#button_play {
+.button_play {
   background: #00ff00;
 }
 
-#button_stop {
+.button_stop {
   background: red;
 }
